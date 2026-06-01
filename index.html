@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>JPTO for GTA</title>
+    <link rel="icon" type="image/png" href="/Images/Logo.png">
+    <link rel="stylesheet" href="CSS/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+<nav class="app-header font-ar">
+    <!-- 1. جهة اليسار: شعار التطبيق الذكي -->
+    <div class="app-header-logo">
+        <a href="/index.html">
+            <img class="app-logo-img" src="/Images/JPTO.png" alt="App Icon"/>
+        </a>
+    </div>
+
+    <!-- 2. جهة اليمين: أقسام التطبيق بالخط العربي العريض (مرتبة بشكل طبيعي) -->
+    <div class="app-header-links">
+        <a href="/index.html">الرئيسية</a>
+        <a href="/Features.html">المميزات</a>
+        <a href="/Download.html">التحميلات</a>
+        <a href="/Support.html">الدعم الفني</a>
+    </div>
+</nav>
+
+
+
+
+    
+<div class="app-landing">
+    <div class="app-container">
+        
+        <!-- الجهة اليمين: نصوص وتفاصيل وأزرار التحميل -->
+        <div class="app-text-side">
+            <span class="app-badge">الإصدار الأحدث 2026</span>
+            <h1 class="font-ar">تطبيقك المفضّل أصبح متاحاً الآن</h1>
+            <p class="font-ar">اكتشف تجربة مستخدم فريدة وسريعة لإدارة أعمالك وتنزيل ملفاتك بضغطة زر واحدة. يدعم الوضع الداكن ومزامنة البيانات الفورية.</p>
+            
+            <!-- عنوان فرعي بالخط الإنجليزي المميز لتجربته -->
+            <h3 class="font-en">PIRATES OF CYDONIA STYLE</h3>
+            
+            <div class="download-buttons">
+                <a href="#" class="btn-download android-btn">
+                    <img src="/Images/Logo.jpg" alt="Google Play">
+                </a>
+                <a href="#" class="btn-download ios-btn">
+                    <img src="/Images/JPTO.png" alt="App Store">
+                </a>
+            </div>
+        </div>
+
+        <!-- الجهة اليسار: موك آب الهاتف مع لقطة التطبيق -->
+        <div class="app-image-side">
+            <div class="phone-mockup">
+                <!-- ضع لقطة شاشة حقيقية من تطبيقك باللون الزيتي الداكن -->
+                <img src="/Images/1.png" alt="App Screenshot" class="screen-shot">
+            </div>
+            <!-- تأثير التوهج الزيتي الفخم خلف الهاتف -->
+            <div class="glow-effect"></div>
+        </div>
+
+    </div>
+</div>
+
+<hr>
+
+
+<div class="app-slider-section">
+    <!-- عنوان القسم بالخط العربي العريض الخاص بك -->
+    <h2 class="slider-title font-ar">لقطات من داخل التطبيق</h2>
+    
+    <div class="slider-container">
+        <!-- زر التنقل لليمين -->
+        <button class="slider-btn prev-btn" id="prevBtn">&#10094;</button>
+        
+        <!-- حاوية الصور المتحركة -->
+        <div class="slider-wrapper">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide"><img src="/Images/2.jpg" alt="الشاشة الأولى"></div>
+                <div class="slide"><img src="/Images/3.jpg" alt="الشاشة الثانية"></div>
+                <div class="slide"><img src="/Images/4.jpg" alt="الشاشة الثالثة"></div>
+                <div class="slide"><img src="/Images/5.jpg" alt="الشاشة الرابعة"></div>
+                
+            </div>
+        </div>
+        
+        <!-- زر التنقل لليسار -->
+        <button class="slider-btn next-btn" id="nextBtn">&#10095;</button>
+    </div>
+    
+    <!-- نقاط المؤشر الصغيرة في الأسفل -->
+    <div class="slider-dots" id="sliderDots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<hr>
+<div class="download-section font-ar">
+    <!-- عنوان القسم -->
+    <h2 class="download-title">روابط التحميل المباشرة</h2>
+    
+    <div class="download-cards-container">
+        
+        <!-- الكرت الأول: تحميل نسخة الأندرويد APK -->
+        <div class="download-card">
+            <div class="card-icon-area">
+                <!-- أيقونة أندرويد مبسطة -->
+                <svg xmlns="http://w3.org" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#bebebe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10v4a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1"/><path d="M12 2a10 10 0 0 0-10 10v4a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H3"/><path d="M12 18v4"/><path d="M9 22h6"/></svg>
+            </div>
+            <div class="card-details">
+                <h3>نسخة الأندرويد</h3>
+                <span class="file-info">الصيغة: APK | الحجم: 45 MB</span>
+            </div>
+            <!-- زر التحميل المباشر -->
+            <a href="/Downloads/jpto-app.apk" class="direct-download-btn" download>
+                تنزيل مباشر .APK
+            </a>
+        </div>
+
+        <!-- الكرت الثاني: تحميل نسخة الكمبيوتر المفتوحة ZIP -->
+        <div class="download-card">
+            <div class="card-icon-area">
+                <!-- أيقونة ملف مضغوط ZIP -->
+                <svg xmlns="http://w3.org" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#bebebe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <div class="card-details">
+                <h3>نسخة الويندوز (PC)</h3>
+                <span class="file-info">الصيغة: ZIP | الحجم: 120 MB</span>
+            </div>
+            <!-- زر التحميل المباشر -->
+            <a href="/Downloads/jpto-pc.zip" class="direct-download-btn" download>
+                تنزيل مباشر .ZIP
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<footer class="app-footer font-ar">
+    <div class="footer-container">
+        
+        <!-- العمود الأول: معلومات وشعار التطبيق -->
+        <div class="footer-box footer-about">
+            <div class="footer-logo">
+                <img src="/Images/JPTO.png" alt="App Icon" class="f-logo-img">
+                <h3 class="font-en">JPTO APP</h3>
+            </div>
+            <p>تطبيقك الشامل والآمن لإدارة وتنزل وتجربة الملفات بأسرع طريقة وأعلى كفاءة ممكنة. مصمم خصيصاً ليلبي تطلعاتك.</p>
+        </div>
+
+        <!-- العمود الثاني: روابط سريعة ومباشرة للموقع -->
+        <div class="footer-box footer-links">
+            <h4>روابط سريعة</h4>
+            <ul>
+                <li><a href="/index.html">الرئيسية</a></li>
+                <li><a href="/Features.html">المميزات</a></li>
+                <li><a href="/Download.html">التحميلات</a></li>
+                <li><a href="/Support.html">الدعم الفني</a></li>
+            </ul>
+        </div>
+
+        <!-- العمود الثالث: شبكات التواصل الاجتماعي وأزرار التحميل المصغرة -->
+        <div class="footer-box footer-social">
+            <h4>تابعنا وتواصل معنا</h4>
+            <div class="social-icons">
+                <!-- يمكنك استبدال علامة # بروابط حساباتك الحقيقية مستقبلاً -->
+                <a href="#" title="تليجرام">
+                    <svg xmlns="http://w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                </a>
+                <a href="#" title="يوتيوب">
+                    <svg xmlns="http://w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><polyline points="10 15 15 12 10 9 10 15"/></svg>
+                </a>
+                <a href="#" title="ديسكورد">
+                    <svg xmlns="http://w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M10 10c-.5.5-.5 1.5 0 2s1.5.5 2 0l2-2"/><path d="M14 14c-.5-.5-.5-1.5 0-2s1.5-.5 2 0l-2 2"/></svg>
+                </a>
+            </div>
+            <p class="footer-note">متوفر على جميع أنظمة التشغيل الذكية.</p>
+        </div>
+
+    </div>
+
+    <!-- الشريط السفلي لحقوق النشر -->
+    <div class="footer-bottom">
+        <p class="font-en">JPTO APP</p>
+        <p>تم التطوير بكل حب </p>
+        <a class="font-en" id="pr-link" href="https://psianpr.com/">PSianPR</a>
+        <span>جميع الحقوق محفوظة &copy; 2026 </span>
+        
+    
+    </div>
+</footer>
+
+
+
+
+<script src="javascript/scripts.js"></script>
+</body>

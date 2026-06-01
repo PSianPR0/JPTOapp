@@ -1,0 +1,731 @@
+html {
+    scroll-behavior: smooth; /* تفعيل الحركة الانسيابية عند الانتقال */
+}
+
+/* إخفاء الإطار الأبيض عند الضغط أو التحديد لزر الـ zip */
+.search-results a:focus, 
+.card a:focus,
+img:focus,
+a:focus,
+button:focus {
+    outline: none !important;
+    box-shadow: none !important; /* لضمان إزالة أي ظلال زرقاء أو بيضاء افتراضية من المتصفح */
+}
+
+body {
+        background-color: #181818;
+    margin:0px;
+    font-family: "Pirates of Cydonia", sans-serif;
+    padding-top: 75px;
+    background: radial-gradient(circle at 80% 20%, #164235, #102e25, #081712); 
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* 1. استدعاء الخطوط الخاصة بك (تأكد من صحة مسارات ملفات الخطوط لديك) */
+@font-face {
+    font-family: 'Pirates of Cydonia';
+    src: url('/Fonts/Pirates of Cydonia.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'AlHurraTxtBold';
+    src: url('/Fonts/AlHurra Font Bold.ttf') format('truetype');
+}
+
+
+
+/* ربط وتفعيل الخطوط المخصصة للتطبيق */
+.font-en { font-family: 'Pirates of Cydonia', sans-serif !important; }
+.font-ar { font-family: 'AlHurraTxtBold', sans-serif !important; }
+
+hr {
+    border: none;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, #bebebe, transparent);
+    
+    /* 💡 الأسطر السحرية لحل المشكلة */
+    margin: 0;                /* تصفير الهوامش الخارجية تمامًا لمنع الفراغات السوداء */
+    position: relative;
+    z-index: 10;
+    
+    /* إذا كنت تريد إعطاء مسافة آمنة ملوّنة بالزيتي بين الأقسام دون ظهور السواد */
+    padding-top: 1px; 
+    padding-bottom: 1px;
+    background-color: #102e25; /* إجبار الخط ومحيطه على أخذ لون خلفيتك المعتمد */
+}
+
+a {
+    text-decoration: none;
+    color:#bebebe
+}
+
+#pr-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.app-slider-section {
+    margin-bottom: 0 !important; /* إلغاء أي هامش سفلي يسبب ظهور الفراغ الأسود */
+}
+
+.download-section {
+    margin-top: 0 !important; /* إلغاء أي هامش علوي */
+}
+
+
+
+
+
+
+/* الحاوية الرئيسية للهيدر الثابت */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 9999;
+    background-color: #0b1f19; /* درجة زيتية داكنة جداً أعمق من الخلفية الأساسية #102e25 */
+    border-bottom: 2px solid #164235; /* خط سفلي ناعم يبرز الهيدر */
+    display: flex;
+    justify-content: space-between; /* توزيع متوازن: الشعار أقصى اليسار، والنصوص أقصى اليمين */
+    align-items: center;
+    padding: 0 40px; /* مسافة أمان مريحة من الأطراف */
+    box-sizing: border-box;
+    direction: ltr; /* لضمان بقاء الشعار على اليسار دائمًا */
+}
+
+/* تنسيق جهة اليسار (أيقونة وشعار التطبيق) */
+.app-header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.app-header-logo .app-logo-img {
+    height: 48px;
+    width: auto;
+    border-radius: 12px; /* زوايا دائرية أنيقة تناسب شكل تطبيقات الهواتف */
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* حركة تفاعلية ناعمة ومميزة عند مرور الماوس على الشعار */
+.app-header-logo .app-logo-img:hover {
+    transform: scale(1.06) rotate(3deg);
+}
+
+/* تنسيق جهة اليمين (روابط ونصوص التطبيق بالخط العربي العريض) */
+.app-header-links {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* مسافة ثابتة ومريحة بين كل رابط والآخر */
+    direction: rtl; /* لقراءة عربية صحيحة وانسيابية من اليمين لليسار */
+}
+
+.app-header-links a {
+    color: #bebebe; /* لون نصوص تطبيقك المعتمد الفضي الرمادي */
+    text-decoration: none;
+    font-size: 18px; /* حجم خط ممتاز ومقروء بوضوح */
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, transform 0.2s, text-shadow 0.3s;
+    white-space: nowrap; /* يمنع الكلمات من النزول لسطر جديد مهما انضغطت الشاشة */
+}
+
+/* التفاعل المضيء عند وضع الماوس أو الصفحة النشطة حاليًا (.in) */
+.app-header-links a:hover, .app-header-links a.in {
+    color: #bebebe; /* يضيء باللون الأبيض الناصع ليتناقض بقوة مع الخلفية الداكنة */
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); /* توهج ناعم يعطي طابعًا عصريًا */
+    transform: translateY(-1px); /* ارتفاع خفيف للأعلى */
+}
+
+/* التجاوب مع شاشات الهواتف والتلفونات الصغيرة */
+@media (max-width: 600px) {
+    .app-header {
+        padding: 0 20px;
+        height: 65px;
+    }
+    .app-header-links {
+        gap: 15px; /* تقليص المسافات لكي تتسع الشاشات الصغيرة للنصوص */
+    }
+    .app-header-links a {
+        font-size: 14px;
+    }
+    .app-header-logo .app-logo-img {
+        height: 38px;
+    }
+}
+
+
+
+/* 2. التنسيق الرئيسي لصفحة الهبوط بناءً على هويتك البصرية */
+.app-landing {
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #102e25; /* لون خلفيتك المعتمد الزيتي الداكن */
+    /* إضافة تدرج دائري ناعم من نفس درجات الزيتي والأسود ليعطي عمقاً فخماً */
+    background: radial-gradient(circle at 80% 20%, #164235, #102e25, #081712); 
+    padding: 40px 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.app-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    direction: rtl;
+}
+
+/* تنسيق جهة النصوص */
+.app-text-side {
+    flex: 1;
+    max-width: 600px;
+}
+
+.app-badge {
+    background-color: #1a4d3e; /* درجة زيتية أفتح قليلاً متناسقة مع الخلفية */
+    border: 1px solid #bebebe; /* حدود بلون النص الفضي لإبرازها */
+    color: #bebebe;            /* لون نصوصك المعتمد */
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'AlHurraTxtBold', sans-serif;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.app-text-side h1 {
+    font-size: 3.2rem;
+    color: #ffffff; /* العنوان الرئيسي أبيض ناصع ليتناقض بقوة مع الزيتي الداكن */
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+}
+
+.app-text-side p {
+    font-size: 1.2rem;
+    color: #bebebe; /* لون نصوصك المعتمد الرمادي الفضي */
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.app-text-side h3 {
+    color: #bebebe;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* أزرار التحميل والتفاعل */
+.download-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-download img {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease, filter 0.3s;
+    border-radius: 6px;
+}
+
+.btn-download:hover img {
+    transform: translateY(-5px) scale(1.02);
+    /* إضافة توهج فضي خفيف يتماشى مع لون نصوصك عند الـ hover */
+    box-shadow: 0 5px 15px rgba(190, 190, 190, 0.2); 
+}
+
+/* تنسيق جهة الهاتف */
+.app-image-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.phone-mockup {
+    width: 290px;
+    height: 590px;
+    background: #081712; /* خلفية الهاتف داكنة جداً من نفس فصيلة ألوانك */
+    border: 10px solid #1a4d3e; /* إطار الهاتف بلون زيتي جذاب */
+    border-radius: 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.phone-mockup:hover {
+    transform: translateY(-12px) rotate(-1.5deg);
+}
+
+.screen-shot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* تأثير الإضاءة والتوهج الزيتي الفخم خلف الهاتف */
+.glow-effect {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    /* توهج زيتي ناعم يبرز الهاتف الذكي */
+    background: radial-gradient(circle, rgba(22, 66, 53, 0.6) 0%, transparent 70%); 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* التجاوب التام لشاشات الهواتف والتلفونات */
+@media (max-width: 900px) {
+    .app-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .app-text-side h1 {
+        font-size: 2.3rem;
+    }
+    
+    .download-buttons {
+        justify-content: center;
+    }
+    
+    .phone-mockup {
+        width: 240px;
+        height: 490px;
+    }
+}
+
+
+/* الحاوية الخارجية لقسم السلايدر */
+.app-slider-section {
+    width: 100%;
+    padding: 60px 20px;
+    background-color: #102e25; /* لون خلفيتك المعتمد */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.slider-title {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* حاوية السلايدر والأزرار */
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 20px;
+    position: relative;
+}
+
+/* إطار العرض الذي يخفي الصور الخارجة عن النطاق */
+.slider-wrapper {
+    width: 300px; /* عرض شاشة الهاتف التقريبي */
+    height: 600px; /* ارتفاع شاشة الهاتف التقريبي */
+    overflow: hidden;
+    border: 8px solid #164235; /* إطار زيتي فخم */
+    border-radius: 36px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    background: #000;
+}
+
+/* المسار الطويل الذي يتحرك أفقيًا بداخل الإطار */
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* حركة انسيابية ذكية */
+}
+
+/* تنسيق كل شريحة صورة فردية */
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* جعل لقطة الشاشة تملأ الهاتف تمامًا */
+}
+
+/* أزرار الأسهم الجانبية للتنقل */
+.slider-btn {
+    background: #164235;
+    color: #bebebe; /* لون نصوصك الفضي */
+    border: 1px solid #bebebe;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: #bebebe;
+    color: #102e25;
+    box-shadow: 0 0 15px rgba(190, 190, 190, 0.4);
+    transform: scale(1.05);
+}
+
+/* النقاط السفلية (Dots) */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #164235;
+    border: 1px solid #bebebe;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+    background: #bebebe; /* تضيء باللون الفضي عند تفعيلها */
+    transform: scale(1.2);
+}
+
+/* التجاوب مع التلفونات وشاشات الهاتف الصغيرة */
+@media (max-width: 600px) {
+    .slider-wrapper {
+        width: 240px;
+        height: 480px;
+    }
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+
+/* ربط وتفعيل الخط العربي العريض الخاص بالتطبيق */
+.font-ar { font-family: 'AlHurraTxtBold', 'Cairo', sans-serif !important; }
+
+/* الحاوية الخارجية لقسم التحميل */
+.download-section {
+    width: 100%;
+    padding: 60px 20px;
+    background-color: #102e25; /* لون خلفيتك المعتمد */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.download-title {
+    color: #ffffff;
+    font-size: 2.3rem;
+    margin-bottom: 40px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* حاوية الكروت لتظهر بجانب بعضها بتناسق وتجاوب */
+.download-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    direction: rtl; /* لترتيب الكروت من اليمين لليسار */
+    flex-wrap: wrap; /* للنزول لسطر جديد تلقائيًا على التلفونات */
+}
+
+/* التنسيق الرئيسي لكرت التحميل */
+.download-card {
+    background-color: #0b1f19; /* درجة زيتية داكنة جداً أعمق من الخلفية */
+    border: 2px solid #164235; /* إطار زيتي ناعم مسبقًا */
+    border-radius: 16px;
+    width: 280px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+/* منطقة الأيقونة العلوية */
+.card-icon-area {
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.download-card h3 {
+    color: #ffffff;
+    font-size: 19px;
+    margin: 10px 0 5px 0;
+}
+
+.file-info {
+    color: #bebebe; /* لون نصوصك الفضي الرمادي المعتمد */
+    font-size: 13px;
+    display: block;
+    margin-bottom: 25px;
+}
+
+/* 💡 زر التحميل المباشر الفخم والتفاعلي */
+.direct-download-btn {
+    width: 100%;
+    background-color: #164235; /* لون زر متناسق مع الفصيلة الزيتية */
+    color: #bebebe;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #bebebe; /* حدود فضية تبرز الزر */
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+/* 🛠️ الكود السحري لمنع الإطارات البيضاء والمربعات المزعجة نهائيًا عند الضغط */
+.direct-download-btn:focus,
+.direct-download-btn:active,
+.download-card:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 🔥 التأثير التفاعلي المذهل عند وضع الماوس (Hover) على الكرت بالكامل */
+.download-card:hover {
+    transform: translateY(-8px); /* يرتفع الكرت للأعلى بسلاسة */
+    border-color: #bebebe; /* يضيء إطار الكرت بالكامل باللون الفضي الرمادي */
+    box-shadow: 0 15px 30px rgba(190, 190, 190, 0.15); /* ظل فضي خفيف يعطي عمقًا مبهجًا */
+}
+
+/* تحريك الأيقونة العلوية بشكل خفيف وممتع عند الـ Hover */
+.download-card:hover .card-icon-area {
+    transform: scale(1.1);
+}
+
+/* تفتيح ألوان أزرار التحميل بشكل جذاب عند الـ Hover وعكس الألوان */
+.direct-download-btn:hover {
+    background-color: #bebebe;
+    color: #102e25; /* تنعكس الألوان ليصبح النص داكنًا والخلفية فضية */
+    box-shadow: 0 0 15px rgba(190, 190, 190, 0.4);
+}
+
+/* التجاوب مع شاشات الهواتف والتلفونات الصغيرة */
+@media (max-width: 650px) {
+    .download-cards-container {
+        gap: 20px;
+    }
+    .download-card {
+        width: 100%; /* يأخذ الكرت كامل عرض الشاشة على الهواتف */
+        max-width: 320px;
+    }
+    .download-title {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+/* ربط وتفعيل الخطوط المخصصة للتطبيق */
+.font-en { font-family: 'Pirates of Cydonia', sans-serif !important; }
+.font-ar { font-family: 'AlHurraTxtBold', sans-serif !important; }
+
+/* الحاوية الكبرى للفوتر */
+.app-footer {
+    width: 100%;
+    background-color: #0b1f19; /* درجة زيتية داكنة جداً أعمق من لون الخلفية الأساسية #102e25 */
+    border-top: 2px solid #164235; /* خط علوي ناعم ليفصله عن محتوى الصفحة */
+    padding: 60px 0 20px 0;
+    box-sizing: border-box;
+    color: #bebebe; /* لون نصوص تطبيقك المعتمد الفضي الرمادي */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    direction: rtl; /* اتجاه النصوص من اليمين لليسار بقراءة عربية صحيحة */
+}
+
+/* التنسيق العام لأعمدة الفوتر */
+.footer-box {
+    flex: 1;
+}
+
+.footer-box h4 {
+    color: #ffffff; /* العناوين باللون الأبيض الناصع لتبرز */
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* إضافة خط صغير جذاب تحت كل عنوان في الفوتر */
+.footer-box h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    width: 35px;
+    height: 2px;
+    background-color: #bebebe;
+}
+
+/* العمود الأول: عن التطبيق والشعار */
+.footer-about .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.footer-about .f-logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.footer-about .footer-logo h3 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.footer-about p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* العمود الثاني: الروابط السريعة */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #bebebe;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* تفاعل الروابط عند مرور الماوس (يتحول للأبيض ويتحرك لليسار قليلاً) */
+.footer-links ul li a:hover {
+    color: #ffffff;
+    transform: translateX(-5px);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* العمود الثالث: أيقونات التواصل الاجتماعي */
+.footer-social .social-icons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.footer-social .social-icons a {
+    background-color: #164235; /* لون خلفية الأيقونات من فصيلة الزيتي */
+    color: #bebebe;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.footer-social .social-icons a:hover {
+    background-color: #bebebe;
+    color: #102e25; /* تنعكس الألوان عند وضع الماوس */
+    border-color: #bebebe;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(190, 190, 190, 0.2);
+}
+
+.footer-social .footer-note {
+    font-size: 13px;
+    font-style: italic;
+    margin: 0;
+}
+
+/* الشريط السفلي تماماً لحقوق النشر */
+.footer-bottom {
+    width: 100%;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #164235;
+    text-align: center;
+    font-size: 13px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-bottom span {
+    color: #ffffff;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+/* التجاوب التام للشاشات الصغيرة والتلفونات */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* ترتيب الأعمدة تحت بعضها على الهواتف */
+        gap: 35px;
+        padding: 0 25px;
+    }
+    .footer-box h4 {
+        margin-bottom: 15px;
+    }
+    .app-footer {
+        padding: 40px 0 20px 0;
+    }
+    .footer-bottom {
+        margin-top: 35px;
+    }
+}
